@@ -3,7 +3,7 @@
         <el-container>
           <!-- 侧边栏 -->
           <el-aside>
-            <el-menu v-if="menuList" default-active="1-0"  text-color="#fff" background-color="#545c64" active-text-color="#ffd04b">
+            <el-menu v-if="menuList" :default-active="activeNav" @select="selectMenu" text-color="#fff" background-color="#545c64" active-text-color="#ffd04b">
               <template v-for="(menu, index) in menuList" >
                 <el-menu-item v-if="!menu.children" :key="index" :index="index.toString()" @click="handleSubmenuClick(menu)">
                   <i :class="menu.icon"></i>
@@ -42,25 +42,21 @@ export default {
   data () {
     return {
       menuList: [
-        // {
-        //   title: 'Vue',
-        //   icon: 'el-icon-location',
-        //   children: [
-        //     {
-        //       title: 'Vue.js'
-        //     }
-        //   ]
-        // },
-        // {
-        //   title: 'elementUI',
-        //   icon: 'el-icon-menu'
-        // }
-      ]
+      ],
+      activeNav: ''
     }
   },
   created () {
-    this.menuList = this.$router.options.routes[0].children
-    console.log(this.$router)
+    this.menuList = this.$router.options.routes[0].children;
+    //在页面加载时读取sessionStorage里的状态信息
+    if (sessionStorage.getItem("store") ) {
+      this.$store.replaceState(Object.assign({}, this.$store.state,JSON.parse(sessionStorage.getItem("store"))))
+    }
+    //在页面刷新时将vuex里的信息保存到sessionStorage里
+    window.addEventListener("beforeunload",()=>{
+      sessionStorage.setItem("store",JSON.stringify(this.$store.state))
+    })
+    this.activeNav = this.$store.state.layout.menuActive;
   },
   computed: {
     key () {
@@ -70,7 +66,6 @@ export default {
   methods: {
     // 不含二级菜单的菜单栏点击
     handleSubmenuClick (item) {
-      console.log(item)
       this.$router.push({
         path: item.path
       })
@@ -80,6 +75,10 @@ export default {
       this.$router.push({
         path: menu.path + '/' + item.path
       })
+    },
+    // 菜单选择
+    selectMenu (index) {
+      this.$store.commit('changeMenuActive', index);
     }
   }
 }

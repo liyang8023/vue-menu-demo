@@ -33,7 +33,7 @@ const router = new Router({
             {
               path: 'g6-editor',
               title: 'g6-editor',
-              component: () => import('@/views/G6/g6-editor')
+              component: () => import('@/views/G6/g6-editor/index')
             }
           ]
         },
