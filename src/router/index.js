@@ -38,15 +38,20 @@ const router = new Router({
           ]
         },
         {
-          path: '/vue',
-          title: 'vue',
+          path: '/demo',
+          title: 'demo',
           icon: 'el-icon-lollipop',
           component: Index,
           children: [
             {
-              path: 'vueTest',
+              path: 'vuexDemo',
               title: 'vuexDemo',
-              component: () => import('@/views/vue/test.vue')
+              component: () => import('@/views/demo/test.vue')
+            },
+            {
+              path: 'luckDraw',
+              title: '抽奖',
+              component: () => import('@/views/demo/luckDraw.vue')
             }
           ]
         },

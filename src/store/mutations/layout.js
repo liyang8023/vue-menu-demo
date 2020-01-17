@@ -4,7 +4,7 @@ const layout = {
     },
     mutations: {
         changeMenuActive: (state, index) => {
-            console.log(index);
+            // console.log(index);
             state.menuActive = index;
         }
     }
