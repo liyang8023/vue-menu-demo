@@ -16,6 +16,8 @@
   "dependencies": {
     "@antv/g6-editor": "^1.2.0",
     "element-ui": "^2.13.0",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.22",
     "vue-router": "^3.0.1",

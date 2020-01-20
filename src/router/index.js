@@ -52,6 +52,11 @@ const router = new Router({
               path: 'luckDraw',
               title: '抽奖',
               component: () => import('@/views/demo/luckDraw.vue')
+            },
+            {
+              path: 'htmlToPdf',
+              title: '导出pdf',
+              component: () => import('@/views/demo/htmlToPdf.vue')
             }
           ]
         },

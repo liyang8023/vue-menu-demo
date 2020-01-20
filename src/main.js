@@ -8,6 +8,7 @@ import BMap from 'vue-baidu-map'
 
 import router from './router'
 import store from './store'
+import htmlToPdf from '@/components/htmlToPdf'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -18,6 +19,7 @@ Vue.use(Vuex)
 Vue.use(BMap, {
   ak: 'jo1ynPeGnkvyKoLtIM0Ldhh91tChqgKM'
 })
+Vue.use(htmlToPdf)
 
 /* eslint-disable no-new */
 new Vue({
