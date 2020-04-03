@@ -25,15 +25,15 @@ const router = new Router({
           ]
         },
         {
-          path: '/G6',
-          title: 'G6',
+          path: '/custom',
+          title: '自定义',
           icon: 'el-icon-location',
           component: Index,
           children: [
             {
-              path: 'g6-editor',
-              title: 'g6-editor',
-              component: () => import('@/views/G6/g6-editor/index')
+              path: 'serchInput',
+              title: 'input',
+              component: () => import('@/views/custom/searchInput')
             }
           ]
         },
@@ -43,11 +43,6 @@ const router = new Router({
           icon: 'el-icon-lollipop',
           component: Index,
           children: [
-            {
-              path: 'vuexDemo',
-              title: 'vuexDemo',
-              component: () => import('@/views/demo/test.vue')
-            },
             {
               path: 'luckDraw',
               title: '抽奖',
@@ -61,23 +56,23 @@ const router = new Router({
           ]
         },
         {
-          path: '/ElementUI',
-          title: 'ElementUI',
+          path: '/echarts',
+          title: '可视化',
           icon: 'el-icon-menu',
-          component: resolve => require(['../views/elementUi/UiTest.vue'], resolve)
+          children: [
+            {
+              path: 'bar',
+              title: '柱状图',
+              component: () => import('@/views/echarts/bar')
+            }
+          ]
         },
         {
           path: '/js',
           title: 'js',
           icon: 'el-icon-set-up',
           component: Index,
-          children: [
-            {
-              path: 'function',
-              title: 'function',
-              component: () => import('@/views/js/function.vue')
-            }
-          ]
+          children: []
         },
         {
           path: '/css',
